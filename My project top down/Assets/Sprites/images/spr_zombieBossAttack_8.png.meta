@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spr_zombieBossAttack_8_0: 8279296530126481992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
