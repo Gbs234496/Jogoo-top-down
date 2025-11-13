@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tecaldo_0: 1930646574111971393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
