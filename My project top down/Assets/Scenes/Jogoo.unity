@@ -248,7 +248,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -256,6 +255,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &440331175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1737872953323693871, guid: e3012dca2bbaf324988d9bdcd9b8e810, type: 3}
@@ -274,6 +274,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!95 &440331182
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440331175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cae718b0c17f77e4e9a0bcabfa43fa64, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &839720218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6065781981168538941, guid: 8a62e625aab08434e99d3d02b1f13077, type: 3}
+  m_PrefabInstance: {fileID: 2891685978484822431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &839720223
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839720218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 531e5304ec5c8ec4da9d5e8c0b7a29d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1046370788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3301676047412478987, guid: bd41ab1469150d545892ff8d4e9751c9, type: 3}
@@ -373,6 +422,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1737872953323693871, guid: e3012dca2bbaf324988d9bdcd9b8e810, type: 3}
       insertIndex: -1
       addedObject: {fileID: 440331176}
+    - targetCorrespondingSourceObject: {fileID: 1737872953323693871, guid: e3012dca2bbaf324988d9bdcd9b8e810, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 440331182}
   m_SourcePrefab: {fileID: 100100000, guid: e3012dca2bbaf324988d9bdcd9b8e810, type: 3}
 --- !u!1001 &2891685978484822431
 PrefabInstance:
@@ -384,7 +436,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 747334894459148427, guid: 8a62e625aab08434e99d3d02b1f13077, type: 3}
       propertyPath: m_Constraints
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 747334894459148427, guid: 8a62e625aab08434e99d3d02b1f13077, type: 3}
       propertyPath: m_GravityScale
@@ -437,7 +489,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6065781981168538941, guid: 8a62e625aab08434e99d3d02b1f13077, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 839720223}
   m_SourcePrefab: {fileID: 100100000, guid: 8a62e625aab08434e99d3d02b1f13077, type: 3}
 --- !u!1001 &4968178515528865715
 PrefabInstance:
