@@ -2,50 +2,45 @@ using UnityEngine;
 
 public class Personagem : MonoBehaviour
 {
-   
-    public float velocidade = 5f;
-    public int vida = 10;
-    public int energia = 100;
-
     
-    void Update()
+    [SerializeField] private float velocidade;
+    [SerializeField] private int vida;
+    [SerializeField] private int energia;
+
+    public void setVelocidade(float velocidade)
     {
-        Mover();
+        this.velocidade = velocidade;
     }
 
-    void Mover()
+    public float getVelocidade()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 direcao = new Vector3(horizontal, 0, vertical);
-        transform.Translate(direcao * velocidade * Time.deltaTime);
+        return this.velocidade;
     }
 
-    // Método para aplicar dano
-    public void ReceberDano(int dano)
+    public void setVida(int vida)
     {
-        vida -= dano;
-        if (vida <= 0)
-        {
-            vida = 0;
-            Morrer();
-        }
+        this.vida = vida;
     }
 
-    // Método para gastar energia
-    public void GastarEnergia(int quantidade)
+    public int getVida()
     {
-        energia -= quantidade;
-        if (energia < 0)
-        {
-            energia = 0;
-        }
+        return this.vida;
     }
 
-    void Morrer()
+    public void setEnergy(int energia)
     {
-        Debug.Log("O personagem morreu!");
-        // Aqui você pode adicionar lógica para reiniciar o jogo ou destruir o objeto.
+        this.energia = energia;
+    }
+
+    public int getEnergy()
+    {
+        return this.energia;
+    }
+
+    public void recebeDano(int dano)
+    {
+        // atribui dano ao personagem
+        int novaVida = getVida() - dano;
+        setVida(novaVida);
     }
 }
