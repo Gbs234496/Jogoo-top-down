@@ -4,20 +4,20 @@ using UnityEngine;
 public class Inimigo : Personagem
 {
     [SerializeField] private int dano = 1;
-    
+
     public float raioDeVisao = 1;
     public CircleCollider2D _visaoCollider2D;
 
     [SerializeField] private Transform posicaoDoPlayer;
-    
+
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
     private AudioSource audioSource;
-    
-    
+
+
     private bool andando = false;
-    
+
     public void setDano(int dano)
     {
         this.dano = dano;
@@ -31,14 +31,14 @@ public class Inimigo : Personagem
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        
+
         audioSource = GetComponent<AudioSource>();
-        
+
         if (posicaoDoPlayer == null)
         {
             posicaoDoPlayer =  GameObject.Find("Player").transform;
         }
-        
+
         raioDeVisao = _visaoCollider2D.radius;
     }
 
@@ -77,7 +77,7 @@ public class Inimigo : Personagem
         {
             animator.SetTrigger("Morte");
         }
-        
+
         animator.SetBool("Andando",andando);
     }
 
@@ -90,7 +90,7 @@ public class Inimigo : Personagem
             collision.gameObject.GetComponent<Personagem>().setVida(novaVida);
 
             //collision.gameObject.GetComponent<Personagem>().recebeDano(getDano());
-            
+
             setVida(0);
         }
     }
@@ -110,45 +110,38 @@ public class Inimigo : Personagem
 
 using UnityEngine;
 
-public class Inimigo : MonoBehaviour
+public class InimigoSeguir : MonoBehaviour
 {
-    public Transform player;    // arraste o Player aqui
-    public float velocidade = 3f;
-    public float distanciaParaParar = 0.5f;
+    public Transform player;      // arraste o Player no inspetor
+    public float velocidade = 3f; // velocidade do inimigo
+    public float distanciaMinima = 0.5f; // distância para não colar no Player
 
-    private Rigidbody2D rb;
-
-    void Start()
+    void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        if (!player)
+            return;
 
-    void FixedUpdate()
-    {
-        if (player == null) return;
+        // Distância entre o inimigo e o player
+        var distancia = Vector3.Distance(transform.position, player.position);
 
-        // Distância entre inimigo e player
-        float distancia = Vector2.Distance(transform.position, player.position);
-
-        // Se estiver longe, segue
-        if (distancia > distanciaParaParar)
+        // Se o player estiver se movendo, o inimigo segue.
+        // Se o player parar, ele apenas para porque não precisa ajustar direção.
+        if (distancia > distanciaMinima)
         {
-            Vector2 direcao = (player.position - transform.position).normalized;
-            rb.linearVelocity = direcao * velocidade;
-        }
-        else
-        {
-            // Se chegou perto, PARA
-            rb.linearVelocity = Vector2.zero;
+            // Move em direção ao player
+            Vector3 direcao = (player.position - transform.position).normalized;
+            transform.position += direcao * (velocidade * Time.deltaTime);
         }
     }
 
-    // Para NÃO empurrar o player ao colidir
-    void OnCollisionStay2D(Collision2D col)
+    // Garante que não cause dano (impede qualquer trigger de dano)
+    void OnCollisionEnter(Collision collision)
     {
-        if (col.gameObject.CompareTag("Player"))
-        {
-            rb.linearVelocity = Vector2.zero; // trava movimento
-        }
+        // Não faz nada — nenhum dano é aplicado
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Também não faz nada — nenhuma lógica de dano
     }
 }
