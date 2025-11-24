@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2746432439772667150}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Arma
   saidaDoTiro: {fileID: 2383687855406215840}
-  bala: {fileID: 0}
+  bala: {fileID: 5359571397615198860, guid: c644bbd635da2974bbe81162d664229c, type: 3}
   intevaloDeDisparo: 0.2
   cursor: {fileID: 9195055882653104767}
 --- !u!1 &7151009929244813163
