@@ -42,12 +42,13 @@ public class Bala : MonoBehaviour
             collision.gameObject.GetComponent<Personagem>().setVida(novaVida);
             
             //collision.gameObject.GetComponent<Personagem>().recebeDano(getDano());
+            Destroy(gameObject);
         }
         
         // desliga a bala apos a colisão
         //gameObject.SetActive(false);
         
         //destrtoi a bala apos a colisão
-        Destroy(gameObject);
+    
     }
 }

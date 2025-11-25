@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Personagem
 {
     [Header("Atributos")]
     public float speed = 4f;
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * (speed * Time.fixedDeltaTime));
     }
 
     // ---------------------------

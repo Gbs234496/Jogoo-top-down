@@ -1,4 +1,4 @@
-/*
+
 using UnityEngine;
 
 public class Inimigo : Personagem
@@ -36,7 +36,7 @@ public class Inimigo : Personagem
 
         if (posicaoDoPlayer == null)
         {
-            posicaoDoPlayer =  GameObject.Find("Player").transform;
+            posicaoDoPlayer =  GameObject.FindWithTag("Player").transform;
         }
 
         raioDeVisao = _visaoCollider2D.radius;
@@ -104,44 +104,5 @@ public class Inimigo : Personagem
     {
         //desativa quando bate no player
          gameObject.SetActive(false);
-    }
-}
-*/
-
-using UnityEngine;
-
-public class InimigoSeguir : MonoBehaviour
-{
-    public Transform player;      // arraste o Player no inspetor
-    public float velocidade = 3f; // velocidade do inimigo
-    public float distanciaMinima = 0.5f; // distância para não colar no Player
-
-    void Update()
-    {
-        if (!player)
-            return;
-
-        // Distância entre o inimigo e o player
-        var distancia = Vector3.Distance(transform.position, player.position);
-
-        // Se o player estiver se movendo, o inimigo segue.
-        // Se o player parar, ele apenas para porque não precisa ajustar direção.
-        if (distancia > distanciaMinima)
-        {
-            // Move em direção ao player
-            Vector3 direcao = (player.position - transform.position).normalized;
-            transform.position += direcao * (velocidade * Time.deltaTime);
-        }
-    }
-
-    // Garante que não cause dano (impede qualquer trigger de dano)
-    void OnCollisionEnter(Collision collision)
-    {
-        // Não faz nada — nenhum dano é aplicado
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        // Também não faz nada — nenhuma lógica de dano
     }
 }
