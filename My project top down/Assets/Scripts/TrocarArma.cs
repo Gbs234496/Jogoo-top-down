@@ -2,42 +2,37 @@ using UnityEngine;
 
 public class TrocarArma : MonoBehaviour
 {
-    // Coloque suas armas aqui no Inspector
     public GameObject arma1;
     public GameObject arma2;
 
-    private GameObject armaAtual;
+    private int armaIndex = 0;
 
     void Start()
     {
-        // Começa com arma1 ativa e arma2 desativada
-        armaAtual = arma1;
-        arma1.SetActive(true);
-        arma2.SetActive(false);
+        // Garante que apenas uma arma comece ativa
+        AtualizarArma();
     }
 
     void Update()
     {
-        // Troca de arma ao pressionar Enter
-        if (Input.GetKeyDown(KeyCode.Return)) // Enter
+        // Troca de arma usando qualquer ENTER
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            Trocar();
+            armaIndex = 1 - armaIndex; // Alterna entre 0 e 1
+            AtualizarArma();
         }
     }
 
-    void Trocar()
+    void AtualizarArma()
     {
-        if (armaAtual == arma1)
+        if (arma1 != null && arma2 != null)
         {
-            arma1.SetActive(false);
-            arma2.SetActive(true);
-            armaAtual = arma2;
+            arma1.SetActive(armaIndex == 0);
+            arma2.SetActive(armaIndex == 1);
         }
         else
         {
-            arma2.SetActive(false);
-            arma1.SetActive(true);
-            armaAtual = arma1;
+            Debug.LogError("❌ Arma1 ou Arma2 não está atribuída no Inspector!");
         }
     }
 }

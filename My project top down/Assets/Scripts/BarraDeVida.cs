@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BarraDeVida : Personagem
+public class BarraDeVida : MonoBehaviour
 {
     public Slider sliderVidasRestantes;
     
